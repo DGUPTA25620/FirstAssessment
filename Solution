@@ -1,0 +1,61 @@
+package com.atcs.main2;
+
+import java.util.Random;
+
+public class Main {
+	public static void main(String args[]) {
+
+		char[] characters = createArray();
+
+		System.out.println("The lowercase letters are:");
+		displayArray(characters);
+
+		int[] counts = countLetters(characters);
+
+		System.out.println();
+		System.out.println("The occurrences of each letter are:");
+		displayCounts(counts);
+	}
+
+	public static char[] createArray() {
+
+		char[] characters = new char[50];
+		Random generator = new Random();
+
+		String S = "abcdefghijklmnopqrstuvwxyz";
+		for (int i = 0; i < characters.length; i++)
+			characters[i] = (char) S.charAt(generator.nextInt(26));
+
+		return characters;
+	}
+
+	public static void displayArray(char[] characters) {
+
+		for (int i = 0; i < characters.length; i++) {
+			if ((i + 1) % 20 == 0)
+				System.out.println(characters[i] + " ");
+			else
+				System.out.print(characters[i] + " ");
+		}
+	}
+
+	public static int[] countLetters(char[] characters) {
+
+		int[] counts = new int[26];
+
+		for (int i = 0; i < characters.length; i++)
+			counts[characters[i] - 'a']++;
+
+		return counts;
+	}
+
+	public static void displayCounts(int[] counts) {
+		for (int i = 0; i < counts.length; i++) {
+			if ((i + 1) % 10 == 0)
+				System.out.println(counts[i] + " " + (char) (i + 'a'));
+			else
+				System.out.print(counts[i] + " " + (char) (i + 'a') + " ");
+		}
+
+	}
+}
